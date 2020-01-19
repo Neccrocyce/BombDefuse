@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark">
+
+    <TextView
+        android:id="@+id/ba_txt_timer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorWhiteGrey"
+        android:textAlignment="center"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="5dp"
+        android:layout_alignParentTop="true"
+        style="@style/textfield_bigg" />
+
+    <FrameLayout
+        android:id="@+id/ba_qr_code_fr"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/ba_qr_code_txt"
+        android:layout_below="@id/ba_txt_timer">
+
+        <ImageView
+            android:id="@+id/ba_qr_code"
+            android:layout_gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/bs_dscr_qr_code" />
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/ba_qr_code_txt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:textSize="@dimen/textfield_font_size_big"
+        android:layout_marginBottom="5dp"
+        android:textStyle="bold"
+        android:textColor="@color/colorWhite"
+        android:layout_above="@id/ba_txt_code_enter"/>
+
+    <TextView
+        android:id="@+id/ba_txt_code_enter"
+        style="@style/textfield_big"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/ba_numpad"
+        android:background="@color/colorWhiteGrey"
+        android:textAlignment="center"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/br_txt_default" />
+
+    <TableLayout
+        android:id="@+id/ba_numpad"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:padding="5dp">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/ba_btn_7"
+                android:layout_weight="0.33"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/font_size_default"
+                android:text="@string/br_btn_7"
+                android:contentDescription="@string/br_btn_7"
+                android:onClick="enterCode" />
+
+            <Button
+                android:id="@+id/ba_btn_8"
+                android:layout_weight="0.33"
+                android:layout_height="match_parent"
+                android:textSize="@dimen/font_size_default"
+                android:text="@string/br_btn_8"
+                android:contentDescription="@string/br_btn_8"
+                android:onClick="enterCode" />
+
+            <Button
+                android:id="@+id/ba_btn_9"
+                android:layout_weight="0.33"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/font_size_default"
+                android:text="@string/br_btn_9"
+                android:contentDescription="@string/br_btn_9"
+                android:onClick="enterCode"/>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/ba_btn_4"
+                android:layout_weight="0.33"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/font_size_default"
+                android:text="@string/br_btn_4"
+                android:contentDescription="@string/br_btn_4"
+                android:onClick="enterCode"/>
+
+            <Button
+                android:id="@+id/ba_btn_5"
+                android:layout_weight="0.33"
+                android:layout_height="match_parent"
+                android:textSize="@dimen/font_size_default"
+                android:text="@string/br_btn_5"
+                android:contentDescription="@string/br_btn_5"
+                android:onClick="enterCode"/>
+
+            <Button
+                android:id="@+id/ba_btn_6"
+                android:layout_weight="0.33"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/font_size_default"
+                android:text="@string/br_btn_6"
+                android:contentDescription="@string/br_btn_6"
+                android:onClick="enterCode"/>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/ba_btn_1"
+                android:layout_weight="0.33"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/font_size_default"
+                android:text="@string/br_btn_1"
+                android:contentDescription="@string/br_btn_1"
+                android:onClick="enterCode"/>
+
+            <Button
+                android:id="@+id/ba_btn_2"
+                android:layout_weight="0.33"
+                android:layout_height="match_parent"
+                android:textSize="@dimen/font_size_default"
+                android:text="@string/br_btn_2"
+                android:contentDescription="@string/br_btn_2"
+                android:onClick="enterCode"/>
+
+            <Button
+                android:id="@+id/ba_btn_3"
+                android:layout_weight="0.33"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/font_size_default"
+                android:text="@string/br_btn_3"
+                android:contentDescription="@string/br_btn_3"
+                android:onClick="enterCode"/>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageButton
+                android:id="@+id/ba_btn_del"
+                android:layout_weight="0.33"
+                android:layout_height="match_parent"
+                android:textSize="@dimen/font_size_default"
+                app:srcCompat="@android:drawable/ic_input_delete"
+                android:tint="@color/colorBlack"
+                android:contentDescription="@string/br_btn_del"
+                android:onClick="enterCode"/>
+
+            <Button
+                android:id="@+id/ba_btn_0"
+                android:layout_weight="0.33"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/font_size_default"
+                android:text="@string/br_btn_0"
+                android:contentDescription="@string/br_btn_0"
+                android:onClick="enterCode"/>
+
+            <Button
+                android:id="@+id/ba_btn_ok"
+                android:layout_weight="0.33"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/font_size_default"
+                android:text="@string/br_btn_ok"
+                android:contentDescription="@string/br_btn_ok_e"
+                android:onClick="enterCode"/>
+        </TableRow>
+    </TableLayout>
+</RelativeLayout>

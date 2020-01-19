@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">BombDefuse</string>
+
+    <string name="mf_btn_bomb">Bomb</string>
+    <string name="mf_btn_defuse">Defuse Kit</string>
+    <string name="mf_btn_settings">Settings</string>
+    <string name="bs_btn_go">GO GO GO</string>
+    <string name="bs_dscr_qr_code">QR Code</string>
+    <string name="br_txt_default">Enter Code</string>
+    <string name="br_btn_7">7</string>
+    <string name="br_btn_8">8</string>
+    <string name="br_btn_9">9</string>
+    <string name="br_btn_4">4</string>
+    <string name="br_btn_5">5</string>
+    <string name="br_btn_6">6</string>
+    <string name="br_btn_1">1</string>
+    <string name="br_btn_2">2</string>
+    <string name="br_btn_3">3</string>
+    <string name="br_btn_0">0</string>
+    <string name="br_btn_ok">OK</string>
+    <string name="br_btn_del">B</string>
+    <string name="br_btn_ok_e">E</string>
+    <string name="be_txt_detonated">DETONATED</string>
+    <string name="bd_txt_reset">Reset</string>
+    <string name="bd_txt_main_menu">Main menu</string>
+    <string name="be_txt_timer_0">00:00</string>
+    <string name="bd_txt_defused">DEFUSED</string>
+</resources>

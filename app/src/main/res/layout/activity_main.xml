@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/mf_btn_bomb"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/mf_btn_bomb"
+        style="@style/textfield_default"
+        android:onClick="gotoBomb" />
+
+    <Button
+        android:id="@+id/mf_btn_defuse"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/mf_btn_defuse"
+        style="@style/textfield_default"
+        android:onClick="gotoDefuse" />
+
+    <Button
+        android:id="@+id/mf_btn_settings"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/mf_btn_settings"
+        style="@style/textfield_default"
+        android:onClick="gotoSettings" />
+</LinearLayout>

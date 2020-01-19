@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark">
+
+    <TextView
+        android:id="@+id/be_txt_timer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorWhiteGrey"
+        android:textAlignment="center"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="5dp"
+        android:layout_alignParentTop="true"
+        style="@style/textfield_bigg"
+        android:text="@string/be_txt_timer_0"/>
+
+    <TextView
+        android:id="@+id/be_txt_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/textfield_big"
+        android:textAlignment="center"
+        android:layout_marginBottom="5dp"
+        android:textStyle="bold"
+        android:textColor="@color/colorAccent"
+        android:layout_below="@id/be_txt_timer"
+        android:text="@string/be_txt_detonated"/>
+
+    <Button
+        android:id="@+id/be_btn_reset"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/textfield_default"
+        android:text="@string/bd_txt_reset"
+        android:layout_above="@id/be_btn_main_menu"
+        android:onClick="gotoBombReady"/>
+
+    <Button
+        android:id="@+id/be_btn_main_menu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/bd_txt_main_menu"
+        android:layout_alignParentBottom="true"
+        android:onClick="gotoMainActivity"/>
+
+</RelativeLayout>

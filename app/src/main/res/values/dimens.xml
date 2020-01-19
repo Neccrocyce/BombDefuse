@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="font_size_default">25sp</dimen>
+
+    <dimen name="textfield_font_size_default">25sp</dimen>
+    <dimen name="textfiled_padding_default">20dp</dimen>
+
+    <dimen name="textfield_font_size_big">30sp</dimen>
+    <dimen name="textfiled_padding_big">15dp</dimen>
+
+    <dimen name="textfield_font_size_bigg">35sp</dimen>
+    <dimen name="textfiled_padding_bigg">10dp</dimen>
+
+    <dimen name="ba_font_size">30sp</dimen>
+</resources>
