@@ -36,7 +36,10 @@
 
         <activity android:name=".BombDefused">
         </activity>
+
         <activity android:name=".BombDetonated" />
+
+        <activity android:name=".DefuseSetup" />
 
         <service android:name=".TimerService" />
     </application>

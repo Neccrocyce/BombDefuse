@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void gotoDefuse(View view) {
+        startActivity(new Intent(this, DefuseSetup.class));
     }
 
     public void gotoSettings(View view) {
