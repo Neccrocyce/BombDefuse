@@ -25,6 +25,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void gotoSettings(View view) {
-
+        startActivity(new Intent(this, SettingsActivity.class));
     }
 }

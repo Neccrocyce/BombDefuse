@@ -42,6 +42,7 @@
         <activity android:name=".DefuseQRCodeScanner" />
         <activity android:name=".DefuseActive" />
         <activity android:name=".DefuseReady" />
+        <activity android:name=".SettingsActivity" />
 
         <service android:name=".TimerService" />
     </application>

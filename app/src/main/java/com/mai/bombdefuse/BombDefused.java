@@ -2,8 +2,8 @@ package com.mai.bombdefuse;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -12,6 +12,12 @@ public class BombDefused extends Activity {
     protected void onCreate (Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.bomb_defused);
+
+        //play sound
+        final MediaPlayer mp = MediaPlayer.create(this, R.raw.c4_disarmed);
+        if (Settings.isSound()) {
+            mp.start();
+        }
 
         //receive time
         Intent receivedIntent = getIntent();

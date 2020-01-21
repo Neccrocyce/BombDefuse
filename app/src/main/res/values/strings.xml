@@ -25,4 +25,10 @@
     <string name="bd_txt_main_menu">Main menu</string>
     <string name="be_txt_timer_0">00:00</string>
     <string name="bd_txt_defused">DEFUSED</string>
+    <string name="dr_btn_scan">Scan</string>
+    <string name="settings_show_qr_code">show QR Code</string>
+    <string name="settings_codeLength">Length of code</string>
+    <string name="settings_timer_duration">Timer duration (in min)</string>
+    <string name="settings_timer_sound">Timer sound</string>
+    <string name="settings_explosion_sound">Explosion sound</string>
 </resources>

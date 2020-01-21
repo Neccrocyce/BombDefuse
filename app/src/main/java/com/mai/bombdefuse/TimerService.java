@@ -39,7 +39,7 @@ public class TimerService extends Service {
 
         @Override
         public void run() {
-            int time = Settings.getTimerCounter() * 1000;
+            int time = Settings.getTimerDuration() * 1000;
             setTvTime(formatTime(time));
 
             while (time > 0) {

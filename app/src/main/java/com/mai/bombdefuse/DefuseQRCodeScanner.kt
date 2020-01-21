@@ -5,14 +5,12 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
-import android.os.Handler
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import com.google.zxing.BarcodeFormat
 import me.dm7.barcodescanner.zxing.ZXingScannerView
 import com.google.zxing.Result
-import kotlinx.android.synthetic.main.defuse_setup.*
+import kotlinx.android.synthetic.main.defuse_qr_code_scanner.*
 
 /**
  * @see https://codinginfinite.com/qrcode-generator-and-reader-android-example/
@@ -25,7 +23,7 @@ class DefuseQRCodeScanner : AppCompatActivity(), ZXingScannerView.ResultHandler 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.defuse_setup)
+        setContentView(R.layout.defuse_qr_code_scanner)
 
         isSetup = intent.getBooleanExtra("isSetup",false)
 
@@ -58,30 +56,27 @@ class DefuseQRCodeScanner : AppCompatActivity(), ZXingScannerView.ResultHandler 
     override fun handleResult(p0: Result?) {
         if (p0 != null) {
             if (isSetup) {
-                val key = IntArray(p0.text.length)
-                for ((i, character) in p0.text.toCharArray().withIndex()) {
-                    key[i] = Integer.parseInt("" + character)
-                }
-                Settings.setKey(key)
+                Settings.setKey(codeToIntArray(p0.text))
                 startActivity(Intent(this, DefuseReady::class.java))
             } else {
                 val intent = Intent(this, DefuseActive::class.java).apply {
-                    putExtra("code", p0.text)
+                    putExtra("code", codeToIntArray(p0.text))
                 }
                 startActivity(intent)
             }
         }
     }
 
+    private fun codeToIntArray (code : String) : IntArray {
+        val codeArray = IntArray(code.length)
+        for ((i, character) in code.toCharArray().withIndex()) {
+            codeArray[i] = Integer.parseInt("" + character)
+        }
+        return codeArray
+    }
+
     override fun onPause() {
         super.onPause()
         qrCodeScanner.stopCamera()
     }
-
-    /*
-    private fun resumeCamera() {
-        Toast.LENGTH_LONG
-        val handler = Handler()
-        handler.postDelayed({ qrCodeScanner.resumeCameraPreview(this@DefuseQRCodeScanner) }, 2000)
-    }*/
 }

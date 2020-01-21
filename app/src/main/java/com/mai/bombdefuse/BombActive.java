@@ -5,6 +5,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
@@ -20,9 +21,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 public class BombActive extends AppCompatActivity{
+    Dialpad dialpad;
     private int[] code;
-    private char[] codeDefuse = new char[Settings.getCodeLength()*2-1];
-    private int indexCode = 0;
 
     private TextView tvTime;
 
@@ -32,6 +32,12 @@ public class BombActive extends AppCompatActivity{
     protected void onCreate (Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.bomb_active);
+
+        //play sound
+        final MediaPlayer mp = MediaPlayer.create(this, R.raw.c4_plant);
+        if (Settings.isSound()) {
+            mp.start();
+        }
 
         //receive code
         Intent receivedIntent = getIntent();
@@ -53,10 +59,10 @@ public class BombActive extends AppCompatActivity{
         qr_code_txt.setText(Coder.getInstance().codeToCharArray(codeCrypted), 0, codeCrypted.length);
 
         //initialize enter code line
-        flushCodeEntered();
+        dialpad = new Dialpad(Settings.getCodeLength());
 
         TextView tvCode = (TextView) findViewById(R.id.ba_txt_code_enter);
-        tvCode.setText(codeDefuse, 0, codeDefuse.length);
+        tvCode.setText(dialpad.getCode(), 0, dialpad.getCode().length);
 
         //set timer
         tvTime = (TextView) findViewById(R.id.ba_txt_timer);
@@ -74,9 +80,13 @@ public class BombActive extends AppCompatActivity{
     }
 
     public void enterCode (View view) {
-        char key = view.getContentDescription().charAt(0);
-        if (key == 'E') {
-            if (indexCode > codeDefuse.length && isCode()) {
+        final MediaPlayer mp = MediaPlayer.create(this, R.raw.c4_click);
+        if (Settings.isSound()) {
+            mp.start();
+        }
+
+        if (dialpad.isEnterKey(view)) {
+            if (dialpad.reachedEndOfLine() && isCode()) {
                 stopService(new Intent (getBaseContext(), TimerService.class));
                 Intent intent = new Intent(this, BombDefused.class);
                 intent.putExtra("time", tvTime.getText());
@@ -84,49 +94,19 @@ public class BombActive extends AppCompatActivity{
             }
             else {
                 Toast.makeText(getApplicationContext(), "Wrong Code", Toast.LENGTH_SHORT).show();
-                flushCodeEntered();
-            }
-        }
-        else if (key == 'B') {
-            if (indexCode > 1) {
-                indexCode = indexCode - 2;
-                codeDefuse[indexCode] = '_';
+                dialpad.resetCode();
             }
         }
         else {
-            if (indexCode < codeDefuse.length) {
-                codeDefuse[indexCode] = key;
-                indexCode = indexCode + 2;
-            }
+            dialpad.enterKey(view);
         }
 
-        if (indexCode > -1) {
-            TextView tvCode = (TextView) findViewById(R.id.ba_txt_code_enter);
-            tvCode.setText(codeDefuse, 0, codeDefuse.length);
-        }
-    }
-
-    private void flushCodeEntered () {
-        for (int i = 0; i < codeDefuse.length; i = i+2) {
-            codeDefuse[i] = '_';
-        }
-
-        for (int i = 1; i < codeDefuse.length; i = i+2) {
-            codeDefuse[i] = ' ';
-        }
-        indexCode = 0;
-    }
-
-    private int[] getCode () {
-        int[] codeNew = new int[Settings.getCodeLength()];
-        for (int i = 0; i < codeDefuse.length; i = i+2) {
-            codeNew[i/2] = Integer.parseInt("" + codeDefuse[i]);
-        }
-        return codeNew;
+        TextView tvCode = (TextView) findViewById(R.id.ba_txt_code_enter);
+        tvCode.setText(dialpad.getCode(), 0, dialpad.getCode().length);
     }
 
     private boolean isCode () {
-        int[] codeDefuseInt = getCode();
+        int[] codeDefuseInt = dialpad.getCodeAsIntArray();
         boolean isCode = true;
         for (int i = 0; i < code.length; i++) {
             isCode &= codeDefuseInt[i] == code[i];
