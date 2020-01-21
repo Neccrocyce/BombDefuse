@@ -39,7 +39,9 @@
 
         <activity android:name=".BombDetonated" />
 
-        <activity android:name=".DefuseSetup" />
+        <activity android:name=".DefuseQRCodeScanner" />
+        <activity android:name=".DefuseActive" />
+        <activity android:name=".DefuseReady" />
 
         <service android:name=".TimerService" />
     </application>

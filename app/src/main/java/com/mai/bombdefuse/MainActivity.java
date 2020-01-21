@@ -19,7 +19,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void gotoDefuse(View view) {
-        startActivity(new Intent(this, DefuseSetup.class));
+        Intent intent = new Intent(this, DefuseQRCodeScanner.class);
+        intent.putExtra("isSetup", true);
+        startActivity(intent);
     }
 
     public void gotoSettings(View view) {
